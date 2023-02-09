@@ -89,7 +89,7 @@ namespace zex.cvtools
 				m_dummycam.rect = m_maincam.rect;
 				m_dummycam.depth = m_maincam.depth + 1;
 				m_dummycam.clearFlags = CameraClearFlags.Color;
-				m_dummycam.backgroundColor = Color.black;
+				m_dummycam.backgroundColor = new Color(0.5f, 0.74f, 1f, 1f);
 				m_dummycam.targetTexture = m_renderTexture;
 			}
 		}
