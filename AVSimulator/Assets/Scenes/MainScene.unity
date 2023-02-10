@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: USV
       objectReference: {fileID: 0}
+    - target: {fileID: 8193846129822715691, guid: 33fe48ebab8f1418a9bc16340bbc4f6f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33fe48ebab8f1418a9bc16340bbc4f6f, type: 3}
 --- !u!1 &551944818
@@ -524,7 +528,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c6072f17f735554b843f8d559235b3a, type: 3}
   m_Name: 
