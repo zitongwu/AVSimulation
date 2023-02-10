@@ -16,6 +16,7 @@ public class MeshGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         m_Mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = m_Mesh;
 
@@ -32,12 +33,14 @@ public class MeshGenerator : MonoBehaviour
     {
         Transform origin = GetComponent<Transform>();
         m_Vertices = new Vector3[(m_xSize + 1) * (m_zSize + 1)];
+        float xRandomOffset = Random.Range(0f, 20f);
+        float zRandomOffset = Random.Range(0f, 20f);
 
         for (int i = 0, z = 0; z <= m_zSize; z++)
         {
             for (int x = 0; x <= m_xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 20f;
+                float y = Mathf.PerlinNoise((x +  xRandomOffset) * .3f , (z + zRandomOffset) * .3f) * 20f;
                 m_Vertices[i] = new Vector3((x - ((float) m_xSize/ 2))* m_SideLength, y, (z - ((float)m_zSize / 2)) * m_SideLength);
                 i++;
             }
