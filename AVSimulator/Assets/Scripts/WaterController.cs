@@ -7,17 +7,12 @@ public class WaterController : MonoBehaviour
     public Material m_OpaqueWaterMat;
     public Material m_TransparentWaterMat;
     Renderer m_Renderer;
+
     // Start is called before the first frame update
     void Start()
     {
         m_Renderer = GetComponent<Renderer>();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateMaterial(bool opaque)

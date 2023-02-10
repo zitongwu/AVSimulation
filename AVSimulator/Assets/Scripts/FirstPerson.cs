@@ -3,12 +3,13 @@ using System.Collections;
 
 public class FirstPerson : MonoBehaviour
 {
-    Transform tr;
-    float speed = 5f;
+    Transform m_Transform;
+    float m_Speed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
-        tr = GetComponent<Transform>();
+        m_Transform = GetComponent<Transform>();
 
     }
 
@@ -17,19 +18,19 @@ public class FirstPerson : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            tr.position = tr.position + Vector3.up * speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + Vector3.up * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            tr.position = tr.position + Vector3.down * speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + Vector3.down * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            tr.position = tr.position + Vector3.right * speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + Vector3.right * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            tr.position = tr.position + Vector3.left * speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + Vector3.left * m_Speed * Time.deltaTime;
         }
     }
 }

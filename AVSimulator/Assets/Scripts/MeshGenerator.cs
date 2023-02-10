@@ -5,19 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class MeshGenerator : MonoBehaviour
 {
-    Mesh mesh;
-    Vector3[] vertices;
-    int[] triangles;
+    Mesh m_Mesh;
+    Vector3[] m_Vertices;
+    int[] m_Triangles;
 
-    public int xSize = 20;
-    public int zSize = 20;
-    public float sideLength = 5f;
+    public int m_xSize = 20;
+    public int m_zSize = 20;
+    public float m_SideLength = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        m_Mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = m_Mesh;
 
         StartCoroutine(CreateShape());
         UpdateMesh();
@@ -31,33 +31,33 @@ public class MeshGenerator : MonoBehaviour
     IEnumerator CreateShape()
     {
         Transform origin = GetComponent<Transform>();
-        vertices = new Vector3[(xSize + 1) * (zSize + 1)];
+        m_Vertices = new Vector3[(m_xSize + 1) * (m_zSize + 1)];
 
-        for (int i = 0, z = 0; z <= zSize; z++)
+        for (int i = 0, z = 0; z <= m_zSize; z++)
         {
-            for (int x = 0; x <= xSize; x++)
+            for (int x = 0; x <= m_xSize; x++)
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 20f;
-                vertices[i] = new Vector3((x - ((float) xSize/ 2))* sideLength, y, (z - ((float)zSize / 2)) * sideLength);
+                m_Vertices[i] = new Vector3((x - ((float) m_xSize/ 2))* m_SideLength, y, (z - ((float)m_zSize / 2)) * m_SideLength);
                 i++;
             }
         }
 
-        triangles = new int[xSize * zSize * 6];
+        m_Triangles = new int[m_xSize * m_zSize * 6];
 
         int vert = 0;
         int tris = 0;
 
-        for (int z = 0; z < zSize; z++)
+        for (int z = 0; z < m_zSize; z++)
         {
-            for (int x = 0; x < xSize; x++)
+            for (int x = 0; x < m_xSize; x++)
             {
-                triangles[tris + 0] = vert + 0;
-                triangles[tris + 1] = vert + xSize + 1;
-                triangles[tris + 2] = vert + 1;
-                triangles[tris + 3] = vert + 1;
-                triangles[tris + 4] = vert + xSize + 1;
-                triangles[tris + 5] = vert + xSize + 2;
+                m_Triangles[tris + 0] = vert + 0;
+                m_Triangles[tris + 1] = vert + m_xSize + 1;
+                m_Triangles[tris + 2] = vert + 1;
+                m_Triangles[tris + 3] = vert + 1;
+                m_Triangles[tris + 4] = vert + m_xSize + 1;
+                m_Triangles[tris + 5] = vert + m_xSize + 2;
 
                 vert++;
                 tris += 6;
@@ -73,11 +73,11 @@ public class MeshGenerator : MonoBehaviour
     // Update is called once per frame
     void UpdateMesh()
     {
-        mesh.Clear();
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
+        m_Mesh.Clear();
+        m_Mesh.vertices = m_Vertices;
+        m_Mesh.triangles = m_Triangles;
 
-        mesh.RecalculateNormals();
+        m_Mesh.RecalculateNormals();
     }
 
     //private void OnDrawGizmos()
@@ -93,11 +93,11 @@ public class MeshGenerator : MonoBehaviour
 
     public Vector2 GetSize()
     {
-        return new Vector2((float) xSize, (float) zSize);
+        return new Vector2((float) m_xSize, (float) m_zSize);
     }
 
     public float GetSideLength()
     {
-        return sideLength;
+        return m_SideLength;
     }
 }

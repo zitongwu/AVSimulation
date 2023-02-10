@@ -5,7 +5,7 @@ using zex.cvtools;
 
 public class SkyColor : MonoBehaviour
 {
-    public Color color;
+    public Color m_Color;
     private SegmentationScript m_Segmentation;
 
     // Start is called before the first frame update
@@ -19,10 +19,7 @@ public class SkyColor : MonoBehaviour
     {
         if (m_Segmentation != null)
         {
-            Debug.Log(true);
-            m_Segmentation.skyColor = color;
+            m_Segmentation.skyColor = m_Color;
         }
-            
-        //Debug.Log(m_Segmentation.skyColor);
     }
 }
