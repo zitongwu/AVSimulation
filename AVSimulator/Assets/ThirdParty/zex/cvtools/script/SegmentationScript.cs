@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace zex.cvtools
 {
-
 	[RequireComponent(typeof(Camera))]
-	public class SegmentationScript : MonoBehaviour {
 
+	public class SegmentationScript : MonoBehaviour {
+		public Color skyColor = new Color(0.5f, 0.74f, 1f, 1f);
 		[SerializeField, HideInInspector]
 		public Shader shader=null;
 
@@ -27,7 +26,7 @@ namespace zex.cvtools
 		private Camera m_dummycam = null;
 		private MaterialPropertyBlock m_propertyBlock = null;
 
-		
+
 
 
 		public RenderTexture renderTexture
@@ -89,7 +88,7 @@ namespace zex.cvtools
 				m_dummycam.rect = m_maincam.rect;
 				m_dummycam.depth = m_maincam.depth + 1;
 				m_dummycam.clearFlags = CameraClearFlags.Color;
-				m_dummycam.backgroundColor = new Color(0.5f, 0.74f, 1f, 1f);
+				m_dummycam.backgroundColor = skyColor;
 				m_dummycam.targetTexture = m_renderTexture;
 			}
 		}
@@ -139,6 +138,11 @@ namespace zex.cvtools
 				{
 					Debug.Log("Disable segmentation shader");
 				}
+			}
+
+			if (m_dummycam == null)
+			{
+				m_dummycam.backgroundColor = skyColor;
 			}
 
 		}

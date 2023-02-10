@@ -34,7 +34,6 @@ public class USVController : MonoBehaviour
     {
         dir = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
         dir.Normalize();
-        Debug.Log(dir);
         tr.rotation = Quaternion.LookRotation(dir);
     }
 

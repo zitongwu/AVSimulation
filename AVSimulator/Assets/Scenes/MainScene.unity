@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194234}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -501,7 +502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.76266, z: -2.6971383}
+  m_LocalPosition: {x: 0, y: 4.5, z: -2.6971383}
   m_LocalScale: {x: 0.6296436, y: 2.76266, z: 0.26971382}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6072f17f735554b843f8d559235b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skyColor: {r: 0.5, g: 0.74, b: 1, a: 1}
   shader: {fileID: 4800000, guid: b991bd31ee651764cb790f2872c85bab, type: 3}
   m_renderTexture: {fileID: 0}
   m_enable: 1
@@ -562,6 +564,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0277e67cf184a48c9a6d5f66fb16cbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e808b0e1d5241fc9808e254215cb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.49519405, g: 0.74196607, b: 0.9811321, a: 0}
 --- !u!1 &1650390537
 GameObject:
   m_ObjectHideFlags: 0
