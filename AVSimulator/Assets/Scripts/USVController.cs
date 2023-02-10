@@ -6,15 +6,22 @@ public class USVController : MonoBehaviour
 {
     Transform tr;
     Vector3 dir;
-    float interval = 5f;
     float speed = 1f;
-    int frames;
+    float repeatRate = 3f;
+    float size = 1f;
+    float heightScale = 0.8f;
+    public float maxSize = 1f;
+    public float minSize = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>();
-        InvokeRepeating("ChangeDirection", 0f, 3f);
+        size = Random.Range(minSize, maxSize);
+        Vector3 currentScale = tr.localScale;
+        tr.localScale = new Vector3(currentScale.x * size, currentScale.y * size * heightScale, currentScale.z * size);
+        repeatRate = Random.Range(3f, 10f);
+        InvokeRepeating("ChangeDirection", 0f, repeatRate);
     }
 
     // Update is called once per frame
@@ -25,7 +32,10 @@ public class USVController : MonoBehaviour
 
     void ChangeDirection()
     {
-        dir = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+        dir = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
+        dir.Normalize();
+        Debug.Log(dir);
+        tr.rotation = Quaternion.LookRotation(dir);
     }
 
 }
