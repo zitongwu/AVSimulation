@@ -19,7 +19,8 @@ public class MeshGenerator : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        StartCoroutine(CreateShape());
+        CreateShape();
+        UpdateMesh();
     }
 
     private void Update()
@@ -27,8 +28,9 @@ public class MeshGenerator : MonoBehaviour
         UpdateMesh();
     }
 
-    IEnumerator CreateShape()
+    void CreateShape()
     {
+        Transform origin = GetComponent<Transform>();
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
 
         for (int i = 0, z = 0; z <= zSize; z++)
@@ -36,7 +38,7 @@ public class MeshGenerator : MonoBehaviour
             for (int x = 0; x <= xSize; x++)
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 20f;
-                vertices[i] = new Vector3(x * sideLength, y, z * sideLength);
+                vertices[i] = new Vector3((x - ((float) xSize/ 2))* sideLength, y, (z - ((float)zSize / 2)) * sideLength);
                 i++;
             }
         }
@@ -60,7 +62,6 @@ public class MeshGenerator : MonoBehaviour
                 vert++;
                 tris += 6;
 
-                yield return new WaitForSeconds(0.01f);
             }
             vert++;
         }
@@ -77,14 +78,14 @@ public class MeshGenerator : MonoBehaviour
         mesh.RecalculateNormals();
     }
 
-    private void OnDrawGizmos()
-    {
-        if (vertices == null)
-            return;
+    //private void OnDrawGizmos()
+    //{
+    //    if (vertices == null)
+    //        return;
 
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            Gizmos.DrawSphere(vertices[i], .1f);
-        }
-    }
+    //    for (int i = 0; i < vertices.Length; i++)
+    //    {
+    //        Gizmos.DrawSphere(vertices[i], .1f);
+    //    }
+    //}
 }
