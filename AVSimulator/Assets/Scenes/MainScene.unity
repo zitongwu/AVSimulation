@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 44363216}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Shore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44363212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1.547}
+  m_LocalPosition: {x: -64.8, y: 1, z: -30.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,6 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca981521a854e8fa5ddbc931e168a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xSize: 20
+  zSize: 20
+  sideLength: 5
 --- !u!1 &575618764
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &575618765
 MeshCollider:
   m_ObjectHideFlags: 0
