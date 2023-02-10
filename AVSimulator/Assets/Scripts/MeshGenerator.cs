@@ -88,4 +88,14 @@ public class MeshGenerator : MonoBehaviour
     //        Gizmos.DrawSphere(vertices[i], .1f);
     //    }
     //}
+
+    public Vector2 GetSize()
+    {
+        return new Vector2((float) xSize, (float) zSize);
+    }
+
+    public float GetSideLength()
+    {
+        return sideLength;
+    }
 }
