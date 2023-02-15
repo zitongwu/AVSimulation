@@ -33,8 +33,8 @@ public class MeshGenerator : MonoBehaviour
     {
         Transform origin = GetComponent<Transform>();
         m_Vertices = new Vector3[(m_xSize + 1) * (m_zSize + 1)];
-        float xRandomOffset = Random.Range(0f, 20f);
-        float zRandomOffset = Random.Range(0f, 20f);
+        float xRandomOffset = 0; //Random.Range(0f, 20f);
+        float zRandomOffset = 0; //Random.Range(0f, 20f);
 
         for (int i = 0, z = 0; z <= m_zSize; z++)
         {
