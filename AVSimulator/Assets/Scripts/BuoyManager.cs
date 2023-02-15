@@ -11,12 +11,12 @@ public class BuoyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawn());
+        Spawn();
     }
 
-    IEnumerator Spawn()
+    void Spawn()
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         Transform tr = GetComponent<Transform>();
         Vector2 terrainSize = m_Terrain.GetComponent<MeshGenerator>().GetSize();
         float sideLength = m_Terrain.GetComponent<MeshGenerator>().GetSideLength();
@@ -30,7 +30,7 @@ public class BuoyManager : MonoBehaviour
         {
             GameObject BuoyInstance = Instantiate(m_BuoyPrefab, new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax)) * sideLength, Quaternion.identity);
             BuoyInstance.transform.parent = tr;
-            yield return new WaitForSeconds(0.01f);
+            //yield return new WaitForSeconds(0.01f);
         }
     }
 }

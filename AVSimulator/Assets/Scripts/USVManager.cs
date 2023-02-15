@@ -11,12 +11,13 @@ public class USVManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
+        Spawn();
     }
 
-    IEnumerator Spawn()
+    void Spawn()
     {
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(3f);
         Transform tr = GetComponent<Transform>();
         Vector2 terrainSize = m_Terrain.GetComponent<MeshGenerator>().GetSize();
         float sideLength = m_Terrain.GetComponent<MeshGenerator>().GetSideLength();
@@ -30,7 +31,7 @@ public class USVManager : MonoBehaviour
         {
             GameObject USVInstance = Instantiate(m_USVPrefab, new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax)) * sideLength, Quaternion.identity);
             USVInstance.transform.parent = tr;
-            yield return new WaitForSeconds(0.05f);
+            //yield return new WaitForSeconds(0.05f);
         }
     }
 }

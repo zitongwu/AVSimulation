@@ -20,16 +20,17 @@ public class MeshGenerator : MonoBehaviour
         m_Mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = m_Mesh;
 
-        StartCoroutine(CreateShape());
+        //StartCoroutine(CreateShape());
+        CreateShape();
         UpdateMesh();
     }
 
     private void Update()
     {
-        UpdateMesh();
+        //UpdateMesh();
     }
 
-    IEnumerator CreateShape()
+    void CreateShape()
     {
         Transform origin = GetComponent<Transform>();
         m_Vertices = new Vector3[(m_xSize + 1) * (m_zSize + 1)];
@@ -65,7 +66,7 @@ public class MeshGenerator : MonoBehaviour
                 vert++;
                 tris += 6;
 
-                yield return new WaitForSeconds(0.002f);
+                //yield return new WaitForSeconds(0.002f);
 
             }
             vert++;
