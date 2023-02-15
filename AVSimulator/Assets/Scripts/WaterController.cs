@@ -9,10 +9,10 @@ public class WaterController : MonoBehaviour
     Renderer m_Renderer;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
-        m_Renderer = GetComponent<Renderer>();
+        m_Renderer = GetComponent<MeshRenderer>();
 
     }
 
@@ -24,6 +24,8 @@ public class WaterController : MonoBehaviour
         }
         else
         {
+            Debug.Log(m_Renderer.material);
+            Debug.Log(m_TransparentWaterMat);
             m_Renderer.material = m_TransparentWaterMat;
         }
     }
