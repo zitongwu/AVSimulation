@@ -73,7 +73,7 @@ namespace zex.cvtools
 				m_dummy.transform.localRotation = Quaternion.identity;
 				m_dummy.transform.localScale = Vector3.one;
 
-				m_dummy.hideFlags = HideFlags.HideInHierarchy;
+				// m_dummy.hideFlags = HideFlags.HideInHierarchy;
 			}
 			
 			if (m_dummycam == null)
@@ -138,11 +138,6 @@ namespace zex.cvtools
 				{
 					Debug.Log("Disable segmentation shader");
 				}
-			}
-
-			if (m_dummycam == null)
-			{
-				m_dummycam.backgroundColor = skyColor;
 			}
 
 		}
