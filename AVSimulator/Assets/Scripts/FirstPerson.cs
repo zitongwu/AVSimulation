@@ -18,19 +18,28 @@ public class FirstPerson : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            m_Transform.position = m_Transform.position + Vector3.up * m_Speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + m_Transform.up * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            m_Transform.position = m_Transform.position + Vector3.down * m_Speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position - m_Transform.up * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_Transform.position = m_Transform.position + Vector3.right * m_Speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position + m_Transform.right * m_Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            m_Transform.position = m_Transform.position + Vector3.left * m_Speed * Time.deltaTime;
+            m_Transform.position = m_Transform.position - m_Transform.right * m_Speed * Time.deltaTime;
         }
+        if (Input.GetKey(KeyCode.N))
+        {
+            m_Transform.position = m_Transform.position + m_Transform.forward * m_Speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            m_Transform.position = m_Transform.position - m_Transform.forward * m_Speed * Time.deltaTime;
+        }
+
     }
 }
