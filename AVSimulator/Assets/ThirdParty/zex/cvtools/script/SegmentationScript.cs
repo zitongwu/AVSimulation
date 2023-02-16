@@ -117,6 +117,7 @@ namespace zex.cvtools
 
 			foreach (var r in renderers) {
 				var tag = r.gameObject.tag;
+				r.material.shader = shader;
 				m_propertyBlock.SetColor ("_ObjectColor", TagsManager.GetColor (tag));
 				r.SetPropertyBlock (m_propertyBlock);
 			}
