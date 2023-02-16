@@ -18,7 +18,7 @@ public class ShaderSwitch : MonoBehaviour
         m_DepthCamera = GetComponent<DepthCameraScript>();
         m_Segmentation = GetComponent<SegmentationScript>();
 
-        m_defaultShader = Shader.Find("Standard");
+        m_defaultShader = Shader.Find("Universal Render Pipeline/Lit");
         m_ShaderDictionary = new Dictionary<string, Shader>();
 
         UpdateSettings(false, false, true, false);
