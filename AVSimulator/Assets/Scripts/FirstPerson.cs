@@ -32,11 +32,11 @@ public class FirstPerson : MonoBehaviour
         {
             m_Transform.position = m_Transform.position - m_Transform.right * m_Speed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.N))
+        if (Input.GetKey(KeyCode.F))
         {
             m_Transform.position = m_Transform.position + m_Transform.forward * m_Speed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.B))
         {
             m_Transform.position = m_Transform.position - m_Transform.forward * m_Speed * Time.deltaTime;
         }

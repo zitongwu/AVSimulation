@@ -16,17 +16,17 @@ public class WaterController : MonoBehaviour
 
     }
 
-    public void UpdateMaterial(bool opaque)
-    {
-        if (opaque)
-        {
-            m_Renderer.material = m_OpaqueWaterMat;
-        }
-        else
-        {
-            Debug.Log(m_Renderer.material);
-            Debug.Log(m_TransparentWaterMat);
-            m_Renderer.material = m_TransparentWaterMat;
-        }
-    }
+    //public void UpdateMaterial(bool opaque)
+    //{
+    //    if (opaque)
+    //    {
+    //        m_Renderer.material = m_OpaqueWaterMat;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log(m_Renderer.material);
+    //        Debug.Log(m_TransparentWaterMat);
+    //        m_Renderer.material = m_TransparentWaterMat;
+    //    }
+    //}
 }

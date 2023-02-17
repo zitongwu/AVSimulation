@@ -5,62 +5,105 @@ using zex.cvtools;
 
 public class ShaderSwitch : MonoBehaviour
 {
-    DepthCameraScript m_DepthCamera;
-    SegmentationScript m_Segmentation;
-    public WaterController m_WaterController;
+    public Material m_DepthMaterial;
+    public Material m_SegmentationMaterial;
+    Color m_SegmentationSkyColor;
+    Camera m_Camera;
+    Dictionary<string, Material> m_MaterialDictionary;
+    Dictionary<string, Color> m_ColorDictionary;
+    MaterialPropertyBlock m_propertyBlock = null;
 
-    Dictionary<string, Shader> m_ShaderDictionary;
-    Shader m_defaultShader;
-
-    // Start is called before the first frame update
     void Start()
     {
-        m_DepthCamera = GetComponent<DepthCameraScript>();
-        m_Segmentation = GetComponent<SegmentationScript>();
+        m_MaterialDictionary = new Dictionary<string, Material>();
+        m_ColorDictionary = new Dictionary<string, Color>();
+        var renderers = GameObject.FindObjectsOfType<Renderer>();
+        foreach (var r in renderers)
+        {
+            if (!m_MaterialDictionary.ContainsKey(r.gameObject.tag))
+            {
+                m_MaterialDictionary.Add(r.gameObject.tag, r.material);
+                m_ColorDictionary.Add(r.gameObject.tag, r.material.GetColor("_BaseColor"));
+            }
+        }
 
-        m_defaultShader = Shader.Find("Universal Render Pipeline/Lit");
-        m_ShaderDictionary = new Dictionary<string, Shader>();
-
-        UpdateSettings(false, false, true, false);
+        m_propertyBlock = new MaterialPropertyBlock();
+        m_Camera = Camera.main;
+        m_SegmentationSkyColor = new Color(0.5f, 0.74f, 1f, 1f);
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Default view
         if (Input.GetKeyDown(KeyCode.A))
         {
-            UpdateSettings(false, true, true, true);
+            UpdateSettings(false, false);
         }
+        // Segmentation view
         if (Input.GetKeyDown(KeyCode.S))
         {
-            UpdateSettings(true, false, true, false);
+            UpdateSettings(true, false);
         }
+        // Depth view
         if (Input.GetKeyDown(KeyCode.D))
         {
-            UpdateSettings(false, false, true, false);
+            UpdateSettings(false, true);
         }
     }
 
-    void UpdateSettings(bool segEnabled, bool depthEnabled, bool useDefaultShader, bool opaque)
+    void UpdateSettings(bool segEnabled, bool depthEnabled)
     {
-        m_Segmentation.enabled = segEnabled;
-        m_DepthCamera.enabled = depthEnabled;
-        if (useDefaultShader)
-            UseDefaultShader();
-        m_WaterController.UpdateMaterial(opaque);
+        if (segEnabled) {
+            UseSegmentationMaterial();
+            m_Camera.clearFlags = CameraClearFlags.SolidColor;
+            m_Camera.backgroundColor = m_SegmentationSkyColor;
+        }
+        else if (depthEnabled) {
+            UseDepthMaterial();
+            m_Camera.clearFlags = CameraClearFlags.SolidColor;
+            m_Camera.backgroundColor = Color.white;
+        }
+        else
+        {
+            UseDefaultMaterial();
+            m_Camera.clearFlags = CameraClearFlags.Skybox;
+        }
+        
     }
 
-    void UseDefaultShader()
+    void UseDefaultMaterial()
     {
         var renderers = GameObject.FindObjectsOfType<Renderer>();
 
         foreach (var r in renderers)
         {
-            var tag = r.gameObject.tag;
-            Debug.Log(tag);
-            if (!m_ShaderDictionary.ContainsKey(tag))
-                r.material.shader = m_defaultShader;
+            r.material = m_MaterialDictionary[r.gameObject.tag];
+            m_propertyBlock.SetColor("_BaseColor", m_ColorDictionary[r.gameObject.tag]);
+            r.SetPropertyBlock(m_propertyBlock);
+        }
+    }
+
+    void UseDepthMaterial()
+    {
+        var renderers = GameObject.FindObjectsOfType<Renderer>();
+        foreach (var r in renderers)
+        {
+            r.material = m_DepthMaterial;
+        }
+    }
+
+    void UseSegmentationMaterial()
+    {
+        var renderers = GameObject.FindObjectsOfType<Renderer>();
+
+        foreach (var r in renderers)
+        {
+            // Update MaterialPropertyBlock
+            m_propertyBlock.SetColor("_BaseColor", TagsManager.GetColor(r.gameObject.tag));
+            r.SetPropertyBlock(m_propertyBlock);
+
+            r.material = m_SegmentationMaterial;
         }
     }
 }
