@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BuoyPrefab: {fileID: 3080496500312889292, guid: a9a1dd633dd434e098bdfdfeba7bc920, type: 3}
-  m_BuoyNumber: 10
+  m_BuoyNumber: 30
   m_Terrain: {fileID: 44363212}
 --- !u!1 &705507993
 GameObject:
