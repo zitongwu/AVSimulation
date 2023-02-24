@@ -29,6 +29,9 @@
         },
         {
             "m_Id": "0f42e331058b4c3a9e159ec778b61041"
+        },
+        {
+            "m_Id": "31c27913192f4cee9bb2049edb6495bd"
         }
     ],
     "m_Keywords": [],
@@ -185,6 +188,9 @@
         },
         {
             "m_Id": "c1c88555595e499fa8f7e3d110d56fb6"
+        },
+        {
+            "m_Id": "5fc02b7cf2c54af99fe285f7f5c0cda8"
         }
     ],
     "m_GroupDatas": [],
@@ -468,6 +474,34 @@
                     "m_Id": "425dbab4833640ac9c3b2885d2c29a8c"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5fc02b7cf2c54af99fe285f7f5c0cda8"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "8b5aa29bc1dc4c0c890e8e843667441a"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5fc02b7cf2c54af99fe285f7f5c0cda8"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "cd65278037ad4e4a9b57de9f69d14c7e"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -992,6 +1026,27 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "0aed1d47ab5d46ab9d4d140f6de3d4bc",
+    "m_Id": 0,
+    "m_DisplayName": "Tiling",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -2183,8 +2238,8 @@
     "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 100.0,
-        "y": 100.0
+        "x": 1000.0,
+        "y": 1000.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -2249,6 +2304,33 @@
     "m_DefaultValue": {
         "x": 0.0,
         "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "31c27913192f4cee9bb2049edb6495bd",
+    "m_Guid": {
+        "m_GuidSerialized": "4920c4ec-1590-4717-ab86-8287cffbe11c"
+    },
+    "m_Name": "Tiling",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Tiling",
+    "m_DefaultReferenceName": "_Tiling",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 10.0,
+        "y": 10.0,
         "z": 0.0,
         "w": 0.0
     }
@@ -2910,8 +2992,8 @@
     "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 100.0,
-        "y": 100.0
+        "x": 1000.0,
+        "y": 1000.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -3245,6 +3327,41 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "5fc02b7cf2c54af99fe285f7f5c0cda8",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 1044.15673828125,
+            "y": 1665.053955078125,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "0aed1d47ab5d46ab9d4d140f6de3d4bc"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "31c27913192f4cee9bb2049edb6495bd"
     }
 }
 
@@ -5341,6 +5458,9 @@
         },
         {
             "m_Id": "0f42e331058b4c3a9e159ec778b61041"
+        },
+        {
+            "m_Id": "31c27913192f4cee9bb2049edb6495bd"
         }
     ]
 }
