@@ -37,4 +37,13 @@ public class USVController : MonoBehaviour
         m_Transform.rotation = Quaternion.LookRotation(m_Direction);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision:" + collision.collider.name);
+    }
+
+    //void OnTriggerEnter(Collider collider)
+    //{
+    //    Debug.Log("Trigger:" + collider.name);
+    //}
 }

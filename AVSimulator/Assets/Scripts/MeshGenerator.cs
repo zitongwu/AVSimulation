@@ -6,6 +6,7 @@ using UnityEngine;
 public class MeshGenerator : MonoBehaviour
 {
     Mesh m_Mesh;
+    MeshCollider m_Collider;
     Vector3[] m_Vertices;
     int[] m_Triangles;
 
@@ -19,6 +20,7 @@ public class MeshGenerator : MonoBehaviour
 
         m_Mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = m_Mesh;
+        m_Collider = GetComponent<MeshCollider>();
 
         //StartCoroutine(CreateShape());
         CreateShape();
@@ -82,6 +84,7 @@ public class MeshGenerator : MonoBehaviour
         m_Mesh.triangles = m_Triangles;
 
         m_Mesh.RecalculateNormals();
+        m_Collider.sharedMesh = m_Mesh;
     }
 
     //private void OnDrawGizmos()
