@@ -16,7 +16,7 @@ public class Lidar : MonoBehaviour
     public Color ObstructionColor = new Color(0.66f, 1f, 0.52f);
     List<Color> colors;
     public Transform folder;
-
+    public Transform origin;
 
     // Start is called before the first frame update
     void Start()
@@ -51,21 +51,21 @@ public class Lidar : MonoBehaviour
                 float incCol = (float) (maxHorizontalAngle - minHorizontalAngle) / col;
                 Vector3 dir = Quaternion.AngleAxis(j * incCol + minHorizontalAngle, Vector3.up) * v;
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, dir, out hit, 1000))
+                if (Physics.Raycast(origin.position, dir, out hit, 1000))
                 {
                     if (j == 0)
                     {
-                        Debug.DrawLine(transform.position, hit.point, ObstructionColor, Time.fixedDeltaTime, true);
+                        Debug.DrawLine(origin.position, hit.point, ObstructionColor, Time.fixedDeltaTime, true);
                     }
                     particles[i, j].transform.position = hit.point;
                     particles[i, j].transform.rotation = Quaternion.LookRotation(dir);
                 }
                 else
                 {
-                    particles[i, j].transform.position = transform.position;
+                    particles[i, j].transform.position = origin.position;
                     if (j == 0)
                     {
-                        Debug.DrawRay(transform.position, dir * 20f, NoObstructionColor);
+                        Debug.DrawRay(origin.position, dir * 20f, NoObstructionColor);
                     }
                 }
             }
