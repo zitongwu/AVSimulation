@@ -10,11 +10,12 @@ public class Lidar : MonoBehaviour
     int col = 180;
     float minVerticalAngle = -45f;
     float maxVerticalAngle = 20f;
-    float minHorizontalAngle = -60f;
-    float maxHorizontalAngle = 60f;
+    float minHorizontalAngle = -180f;
+    float maxHorizontalAngle =180f;
     public Color NoObstructionColor = new Color(0.66f, 1f, 0.52f);
     public Color ObstructionColor = new Color(0.66f, 1f, 0.52f);
     List<Color> colors;
+    public Transform folder;
 
 
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class Lidar : MonoBehaviour
             {
                 particles[i, j] = Instantiate(particle, particle.transform.position, particle.transform.rotation);
                 particles[i, j].GetComponent<Renderer>().material.color = colors[i];
+                particles[i, j].transform.parent = folder;
             }
         }
         
