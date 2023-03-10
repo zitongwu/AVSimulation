@@ -8,7 +8,7 @@ public class Lidar : MonoBehaviour
     GameObject [,] particles;
     int row = 64;
     int col = 180;
-    float minVerticalAngle = -45f;
+    float minVerticalAngle = -30f;
     float maxVerticalAngle = 20f;
     float minHorizontalAngle = -180f;
     float maxHorizontalAngle =180f;
@@ -23,7 +23,7 @@ public class Lidar : MonoBehaviour
     {
         particles = new GameObject[row, col];
         colors = new List<Color>();
-        float colorInc = 1f / ((float) row);
+        float colorInc = 0.5f / ((float) row);
         for (int i = 0; i < row; i ++)
         {
 

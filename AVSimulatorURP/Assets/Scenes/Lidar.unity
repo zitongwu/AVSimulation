@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 50469a7323c0b4a0e8d5355f65953eb4, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 66016ac478f437349aa079e42aad2152, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17751563, g: 0.22224188, b: 0.30444735, a: 1}
+  m_IndirectSpecularColor: {r: 0.73364145, g: 0.5773117, b: 0.6932856, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 611180886}
   - component: {fileID: 611180890}
   - component: {fileID: 611180891}
+  - component: {fileID: 611180892}
   m_Layer: 0
   m_Name: SUV
   m_TagString: Untagged
@@ -467,6 +468,18 @@ MonoBehaviour:
   NoObstructionColor: {r: 0.28688526, g: 1, b: 0, a: 1}
   ObstructionColor: {r: 1, g: 0.2688679, b: 0.51977694, a: 1}
   folder: {fileID: 1251165785}
+--- !u!114 &611180892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611180884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599cac547ce440dd9c44bed644c3bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1251165784
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,14 +588,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312071513}
-  m_LocalRotation: {x: -0.025804488, y: -0.9735463, z: 0.14116548, w: -0.1778033}
-  m_LocalPosition: {x: -1.26, y: 2.7876813, z: 5.53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.0029475633, y: -0.9841293, z: 0.016234532, w: -0.17668414}
+  m_LocalPosition: {x: -3.0410895, y: 1.9590901, z: 12.108711}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 16.501, y: 155.811, z: 0.003}
 --- !u!114 &1312071517
 MonoBehaviour:
   m_ObjectHideFlags: 0
