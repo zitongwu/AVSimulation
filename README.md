@@ -1,5 +1,5 @@
 # AVSimulation
-Autonomous Vehicle Simulation 
+Surface Autonomous Vehicle Simulation 
 
 ## Installation Guide
 1. Download repo
