@@ -10,9 +10,11 @@ public class MeshGenerator : MonoBehaviour
     Vector3[] m_Vertices;
     int[] m_Triangles;
 
-    public int m_xSize = 20;
-    public int m_zSize = 20;
-    public float m_SideLength = 5f;
+    public int m_XPoints = 20;
+    public int m_ZPoints = 20;
+    public float m_UnitLength = 5f;
+    public float m_patternDensity = 6f;
+    public float height = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,35 +37,40 @@ public class MeshGenerator : MonoBehaviour
     void CreateShape()
     {
         Transform origin = GetComponent<Transform>();
-        m_Vertices = new Vector3[(m_xSize + 1) * (m_zSize + 1)];
-        float xRandomOffset = 0; //Random.Range(0f, 20f);
-        float zRandomOffset = 0; //Random.Range(0f, 20f);
+        m_Vertices = new Vector3[(m_XPoints + 1) * (m_ZPoints + 1)];
+        float xRandomOffset = Random.Range(0f, m_XPoints);
+        float zRandomOffset = Random.Range(0f, m_ZPoints);
 
-        for (int i = 0, z = 0; z <= m_zSize; z++)
+        for (int i = 0, z = 0; z <= m_ZPoints; z++)
         {
-            for (int x = 0; x <= m_xSize; x++)
+            for (int x = 0; x <= m_XPoints; x++)
             {
-                float y = Mathf.PerlinNoise((x +  xRandomOffset) * .3f , (z + zRandomOffset) * .3f) * 20f;
-                m_Vertices[i] = new Vector3((x - ((float) m_xSize/ 2))* m_SideLength, y, (z - ((float)m_zSize / 2)) * m_SideLength);
+                //float y = Mathf.PerlinNoise((x +  xRandomOffset) * patternDensity , (z + zRandomOffset) * patternDensity) * 20f;
+                float xcoord = xRandomOffset + (float)x / m_XPoints * m_patternDensity;
+                float zcoord = zRandomOffset + (float)z / m_ZPoints * m_patternDensity;
+                Debug.Log(xcoord + "," + zcoord + "," + Mathf.PerlinNoise(xcoord, zcoord) * height);
+                Debug.Log("");
+                float y = Mathf.PerlinNoise(xcoord, zcoord) * height;
+                m_Vertices[i] = new Vector3((x - ((float) m_XPoints/ 2))* m_UnitLength, y, (z - ((float)m_ZPoints / 2)) * m_UnitLength);
                 i++;
             }
         }
 
-        m_Triangles = new int[m_xSize * m_zSize * 6];
+        m_Triangles = new int[m_XPoints * m_ZPoints * 6];
 
         int vert = 0;
         int tris = 0;
 
-        for (int z = 0; z < m_zSize; z++)
+        for (int z = 0; z < m_ZPoints; z++)
         {
-            for (int x = 0; x < m_xSize; x++)
+            for (int x = 0; x < m_XPoints; x++)
             {
                 m_Triangles[tris + 0] = vert + 0;
-                m_Triangles[tris + 1] = vert + m_xSize + 1;
+                m_Triangles[tris + 1] = vert + m_XPoints + 1;
                 m_Triangles[tris + 2] = vert + 1;
                 m_Triangles[tris + 3] = vert + 1;
-                m_Triangles[tris + 4] = vert + m_xSize + 1;
-                m_Triangles[tris + 5] = vert + m_xSize + 2;
+                m_Triangles[tris + 4] = vert + m_XPoints + 1;
+                m_Triangles[tris + 5] = vert + m_XPoints + 2;
 
                 vert++;
                 tris += 6;
@@ -100,11 +107,11 @@ public class MeshGenerator : MonoBehaviour
 
     public Vector2 GetSize()
     {
-        return new Vector2((float) m_xSize, (float) m_zSize);
+        return new Vector2((float) m_XPoints, (float) m_ZPoints);
     }
 
     public float GetSideLength()
     {
-        return m_SideLength;
+        return m_UnitLength;
     }
 }
