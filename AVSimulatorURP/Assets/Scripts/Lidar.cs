@@ -7,7 +7,7 @@ public class Lidar : MonoBehaviour
     public GameObject particle;
     GameObject [,] particles;
     int row = 64;
-    int col = 180;
+    int col = 90;
     float minVerticalAngle = -30f;
     float maxVerticalAngle = 20f;
     float minHorizontalAngle = -180f;
@@ -17,6 +17,8 @@ public class Lidar : MonoBehaviour
     List<Color> colors;
     public Transform folder;
     public Transform origin;
+    Color[] segmentationColors = new Color[] { new Color(1f, 0f, 0f) , new Color(0f, 1f, 0f), new Color(0f, 0f, 1f) };
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,17 @@ public class Lidar : MonoBehaviour
                     }
                     particles[i, j].transform.position = hit.point;
                     particles[i, j].transform.rotation = Quaternion.LookRotation(dir);
+                    if (hit.collider.gameObject.CompareTag("Cube"))
+                    {
+                        particles[i, j].GetComponent<Renderer>().material.color = segmentationColors[0];
+                    } else if (hit.collider.gameObject.CompareTag("Sphere"))
+                    {
+                        particles[i, j].GetComponent<Renderer>().material.color = segmentationColors[1];
+                    } else
+                    {
+                        particles[i, j].GetComponent<Renderer>().material.color = segmentationColors[2];
+                    }
+                    
                 }
                 else
                 {
@@ -73,6 +86,7 @@ public class Lidar : MonoBehaviour
 
 
     }
+
 
 
 

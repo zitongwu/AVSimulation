@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Shore
   - USV
+  - Plane
+  - Sphere
+  - Cube
   layers:
   - Default
   - TransparentFX
