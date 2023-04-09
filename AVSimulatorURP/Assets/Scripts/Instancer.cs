@@ -11,12 +11,6 @@ public class Instancer : MonoBehaviour
     public List<List<Matrix4x4>> batches = new List<List<Matrix4x4>>();
    
 
-    private void Start()
-    {
-
-
-    }
-
     private void Update()
     {
         RenderBatches();
@@ -25,16 +19,13 @@ public class Instancer : MonoBehaviour
 
     private void RenderBatches()
     {
-        int count = 0;
         foreach (var batch in batches)
         {
-            count += batch.Count;
             for (int i = 0; i < mesh.subMeshCount; i++)
             {
                 Graphics.DrawMeshInstanced(mesh, i, materials[i], batch);
             }
         }
-        Debug.Log("here:" + count);
     }
 }
 
