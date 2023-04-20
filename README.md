@@ -1,5 +1,6 @@
 # AVSimulation
 Surface Autonomous Vehicle Simulation 
+<img width="1351" alt="Screenshot 2023-04-17 at 3 29 18 PM" src="https://user-images.githubusercontent.com/71951467/233447152-c6dd047c-f38a-4aaf-8cfa-65716e054572.png">
 
 ## Installation Guide
 1. Download repo
